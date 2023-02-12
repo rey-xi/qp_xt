@@ -1,8 +1,8 @@
 name: qp_xt
-version: 0.0.2
+version: 0.0.2+1
 description: Quick Programing Extensions
-homepage: https://github.com/rey-xi/qp_xt/qp_xt
-repository: https://github.com/rey-xi/qp_xt/qp_xt
+homepage: https://github.com/rey-xi/qp_xt
+repository: https://github.com/rey-xi/qp_xt
 
 environment:
   sdk: '>=2.18.1 <3.0.0'
