@@ -124,9 +124,9 @@ extension Calender on DateTime {
     markdown = markdown.replaceAll(RegExp(r'%Day\b'), daysOfTheWeek[weekday].toSentenceCase());
 
     // month.
-    markdown = markdown.replaceAll(RegExp(r'\b(%M+th)\b'), month.toDigitalString(ordinal: true));
-    markdown = markdown.replaceAll(RegExp(r'\b(%MM)\b'), month.toDigitalString(digit: 2));
-    markdown = markdown.replaceAll(RegExp(r'\b(%M)\b'), month.toDigitalString());
+    markdown = markdown.replaceAll(RegExp(r'%M+th\b'), month.toDigitalString(ordinal: true));
+    markdown = markdown.replaceAll(RegExp(r'%MM\b'), month.toDigitalString(digit: 2));
+    markdown = markdown.replaceAll(RegExp(r'%M\b'), month.toDigitalString());
 
     markdown = markdown.replaceAll(RegExp(r'%month\.\.'), monthsOfTheYear[month].substring(0, 3));
     markdown = markdown.replaceAll(
