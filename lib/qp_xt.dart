@@ -10,3 +10,4 @@ export 'src/comparison.dart';
 export 'src/grammar.dart';
 export 'src/identity.dart';
 export 'src/number.dart';
+export 'src/swatch.dart';

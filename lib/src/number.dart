@@ -135,30 +135,3 @@ extension Number<T extends num> on T {
     return '$integer${fraction.charsBefore(decimal + 1)}';
   }
 }
-
-extension Numbers<T extends num> on Iterable<T> {
-  //...Getters
-  /// Return's the maximum number from the list
-  /// ```dart
-  /// print([2, 3].max); // 3;
-  /// ```
-  T get max {
-    T max = first;
-    for (T number in this) {
-      max = max.max(number);
-    }
-    return max;
-  }
-
-  /// Return's the minimum number from the list
-  /// ```dart
-  /// print([2, 3].min); // 2;
-  /// ```
-  T get min {
-    T min = first;
-    for (T number in this) {
-      min = min.min(number);
-    }
-    return min;
-  }
-}

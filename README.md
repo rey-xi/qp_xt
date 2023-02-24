@@ -57,5 +57,6 @@ documentation.
 - Symbol (ID, IDs)
 - Iterable (Collection)
 - DateTime (Calender)
+- Color (Color)
 
 ### Thanks
