@@ -21,7 +21,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import 'collection.dart';
 import 'number.dart';
 
 extension Swatch<T extends Color> on T {
@@ -30,6 +29,7 @@ extension Swatch<T extends Color> on T {
   /// checking if the luminance of color is less than 0.5
   /// or not.
   bool get isDark {
+    //...
     return computeLuminance() < .5 && alpha > 122.5;
   }
 
@@ -37,13 +37,15 @@ extension Swatch<T extends Color> on T {
   /// checking if the luminance of color is greater than 0.5
   /// or not.
   bool get isLight {
+    //...
     return computeLuminance() > .5 || alpha < 122.5;
   }
 
   //...Methods
   /// compare color values with [other] color values. use
   /// [percentDiff] to range their differences against 1
-  double difference(Color other, [double total = 510.0]) {
+  double distanceTo(Color other, [double total = 510.0]) {
+    //...
     final a = (other.alpha - alpha).prime(1);
     final r = (other.red - red).prime(1);
     final g = (other.green - green).prime(1);
@@ -55,6 +57,7 @@ extension Swatch<T extends Color> on T {
   /// the given [factor]. The resultant color is brighter if
   /// factor is positive else the color is deemed
   Color addBrightness(double factor) {
+    //...
     final h = HSLColor.fromColor(this);
     final v = h.lightness + factor * 1.0;
     return h.withLightness(v.clamp(0.0, 1.0)).toColor();
@@ -64,6 +67,7 @@ extension Swatch<T extends Color> on T {
   /// [factor]. The resultant color will be more saturated if
   /// factor is positive else the color is less saturated
   Color addSaturation(double factor) {
+    //...
     final h = HSLColor.fromColor(this);
     final v = h.saturation + factor * 1.0;
     return h.withSaturation(v.clamp(0.0, 1.0)).toColor();
@@ -73,6 +77,7 @@ extension Swatch<T extends Color> on T {
   /// [factor]. The resultant color will be more saturated if
   /// factor is positive else the color is less saturated
   Color addHue(double factor) {
+    //...
     final h = HSLColor.fromColor(this);
     final v = h.hue + factor * 1.0;
     return h.withHue(v.clamp(0.0, 1.0)).toColor();
@@ -82,6 +87,7 @@ extension Swatch<T extends Color> on T {
   /// the given [factor]. The resultant color is brighter if
   /// factor is positive else the color is deemed
   Color withBrightness(double factor) {
+    //...
     final h = HSLColor.fromColor(this);
     final v = factor.clamp(0.0, 1.0);
     return h.withLightness(v).toColor();
@@ -91,6 +97,7 @@ extension Swatch<T extends Color> on T {
   /// [factor]. The resultant color will be more saturated if
   /// factor is positive else the color is less saturated
   Color withSaturation(double factor) {
+    //...
     final h = HSLColor.fromColor(this);
     final v = factor.clamp(0.0, 1.0);
     return h.withSaturation(v).toColor();
@@ -100,6 +107,7 @@ extension Swatch<T extends Color> on T {
   /// [factor]. The resultant color will be more saturated if
   /// factor is positive else the color is less saturated
   Color withHue(double factor) {
+    //...
     final h = HSLColor.fromColor(this);
     final v = factor.clamp(0.0, 1.0);
     return h.withHue(v).toColor();
@@ -109,32 +117,10 @@ extension Swatch<T extends Color> on T {
   /// it will return cyan or green depending on the type of
   /// red. Note: the resultant is less effective to [fore]
   Color invert() {
+    //...
     final r = 255 - red;
     final g = 255 - green;
     final b = 255 - blue;
     return Color.fromARGB((opacity * 255).round(), r, g, b);
-  }
-}
-
-extension Swatches<T extends Color> on Iterable<T> {
-  //...Methods
-  /// compare color values of each color in this color list
-  /// with [other] color values and return the color with the
-  /// smallest difference based on [precision]
-  T closestTo(Color other, [double precision = 510.0]) {
-    //...
-    final differences = map((e) => e.difference(other, precision));
-    final minIndex = differences.toList().indexOf(differences.min);
-    return elementAt(minIndex);
-  }
-
-  /// compare color values of each color in this color list
-  /// with [other] color values and return the color with the
-  /// largest difference based on [precision]
-  T farthestFrom(Color other, [double precision = 510.0]) {
-    //...
-    final differences = map((e) => e.difference(other, precision));
-    final maxIndex = differences.toList().indexOf(differences.max);
-    return elementAt(maxIndex);
   }
 }

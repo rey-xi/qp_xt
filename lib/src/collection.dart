@@ -20,8 +20,11 @@ library collection;
  */
 
 import 'dart:math';
+import 'dart:ui';
 
-part 'algorithms.dart';
+import 'swatch.dart';
+
+part 'collection/algorithms.dart';
 
 /// ## ArrayList
 /// A more Advance means of working with all forms
@@ -1072,6 +1075,29 @@ extension IterableCollection<T> on Iterable<Iterable<T>> {
     for (var elements in this) {
       yield* elements;
     }
+  }
+}
+
+extension SwatchCollection<T extends Color> on Iterable<T> {
+  //...Methods
+  /// compare color values of each color in this color list
+  /// with [other] color values and return the color with the
+  /// smallest difference based on [precision]
+  T closestTo(Color other, [double precision = 510.0]) {
+    //...
+    final differences = map((e) => e.distanceTo(other, precision));
+    final minIndex = differences.toList().indexOf(differences.min);
+    return elementAt(minIndex);
+  }
+
+  /// compare color values of each color in this color list
+  /// with [other] color values and return the color with the
+  /// largest difference based on [precision]
+  T farthestFrom(Color other, [double precision = 510.0]) {
+    //...
+    final differences = map((e) => e.distanceTo(other, precision));
+    final maxIndex = differences.toList().indexOf(differences.max);
+    return elementAt(maxIndex);
   }
 }
 
